@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="model.js"></script>
+    <script defer src="controller.js"></script>
+    <script defer src="view.js"></script>
+    <link type="text/css" rel="stylesheet" href="css.css">
+    <title>App tính thời khóa biểu</title>
+</head>
+<body>
+    
+    <p> Chọn thời khóa biểu theo thứ tự từ CN-T2-7 (1 2 3 4 5 6 7 ) bằng nút màu đen
+        nhập số buổi ngày-tháng-năm bắt đầu(Không tính buổi kèm 1 1). Vd học 345, kèm t2 thì nhập buổi đầu là t3.
+        Số buổi mặc định nếu ko nhập là 9 buổi. Load lại page nếu nhập sai/tính lại
+    
+    
+    </p>
+    
+<button class="button small"  onclick="userx(2,x)">T2</button>
+<button class="button small"  onclick="userx(3,x)">T3</button>
+<button class="button small"  onclick="userx(4,x)">T4</button>
+<button class="button small"  onclick="userx(5,x)">T5</button>
+<button class="button small"  onclick="userx(6,x)">T6</button>    
+<button class="button small"  onclick="userx(7,x)">T7</button>
+<button class="button small"  onclick="userx(1,x)">CN</button>
+<button class="button small" onclick="xoatkb()">Xóa TKB</button>
+<p id="tkb">Thứ </p>
+
+<button class="button small next" onclick="nextweek(1)">CN</button>
+<button class="button small next" onclick="nextweek(2)">T2</button>
+<button class="button small next" onclick="nextweek(3)">T3</button>
+<button class="button small next" onclick="nextweek(4)">T4</button>
+<button class="button small next" onclick="nextweek(5)">T5</button>
+<button class="button small next" onclick="nextweek(6)">T6</button>
+<button class="button small next" onclick="nextweek(7)">T7</button>
+<p>Dùng nút màu vàng để chọn ngày của tuần sau gần nhất, nếu hôm này là T7, thì nút CN sẽ chuyển tới ngày mai, nút T2 sẽ chuyển tới T2 tuần sau</p>
+<button class="button small" onclick="nhaptime(b)">Nhập buổi đầu</button>
+<button class="button small" onclick="today()">Hôm nay</button>
+<button class="button small" onclick="mai(b,1)">Mai</button>
+<button class="button small" onclick="mai(b,2)">Mốt</button>
+<button class="button small" onclick="cong(b,1)">+1</button>
+<button class="button small" onclick="cong(b,2)">+2</button>
+<br>
+
+
+
+
+
+<button class="button small day" onclick="tinhbuoi()">Nhập số buổi</button>
+<button class="button small day" onclick="hocnhanh(8)">8b</button>
+<button class="button small day" onclick="hocnhanh(9)">9b</button>
+<button class="button small day" onclick="hocnhanh(12)">12b</button>
+<button class="button small day" onclick="hocnhanh(13)">13b</button>
+<button class="button small day" onclick="hocnhanh(18)">18b</button>                                    
+<button class="button small day" onclick="hocnhanh(17)">17b</button>
+
+
+<p id="startday"></p>
+<p id="sobuoi">Số buổi mặc định: 9</p>
+
+
+
+<p> Liệt kê tất cả các buổi học theo ngày, tháng, năm-thứ.</p>
+
+<p id="list"></p>  
+<button class="button tinh" onclick="xuatw(z,a)">Tính</button>
+<button class="button tinh" onclick="checkvar()">Log</button>
+<button class="button tinh" onclick="window.location.reload(true)">Load lại page</button>  
+<p>Nếu dùng điện thoại thì kéo xuống dưới sau khi click thống kê</p>
+
+<div id="cn">
+    
+    <div class="times t1">CN: <br>Số buổi</div>
+    <div class="start t1">Ngày<br>Đầu</div>
+    <div class="end t1">Ngày<br>Cuối</div>
+    
+</div>
+
+<div class="flexy">
+    <div class="flex-container">
+        
+        <div class="times t2">Thứ 2: Số buổi</div>
+        <div class="start t2">Đầu</div>
+        <div class="end t2">Cuối</div>
+        
+    </div>
+    <div class="flex-container">
+        
+        <div class="times t3">Thứ 3: Số buổi</div>
+        <div class="start t3">Đầu</div>
+        <div class="end t3">Cuối</div>
+        
+    </div>
+    
+</div>
+<div class="flexy">
+    <div class="flex-container">
+        
+        <div class="times t4">Thứ 4: Số buổi</div>
+        <div class="start t4">Đầu</div>
+        <div class="end t4">Cuối</div>
+        
+    </div>   
+    <div class="flex-container">
+        
+        <div class="times t5">Thứ 5: Số buổi</div>
+        <div class="start t5">Đầu</div>
+        <div class="end t5">Cuối</div>
+        
+    </div>
+   
+</div>
+<div class="flexy">
+    <div class="flex-container">
+        
+        <div class="times t6">Thứ 6: Số buổi</div>
+        <div class="start t6">Đầu</div>
+        <div class="end t6">Cuối</div>
+        
+    </div>
+    <div class="flex-container">
+        
+        <div class="times t7">Thứ 7:Số buổi</div>
+        <div class="start t7">Đầu</div>
+        <div class="end t7">Cuối</div>
+        
+    </div>
+   
+</div>
+
+
+
+
+
+
+
+
+</div>
+</body>
+</html>
